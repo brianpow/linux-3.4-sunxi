@@ -53,7 +53,7 @@ static struct ir_config_info ir_info = {
 
 struct ir_raw_buffer {
 	unsigned long dcnt;                  		/*Packet Count*/
-	#define	IR_RAW_BUF_SIZE		128
+	#define	IR_RAW_BUF_SIZE		1280
 	unsigned char buf[IR_RAW_BUF_SIZE];
 };
 
@@ -771,6 +771,15 @@ static void __exit ir_rx_exit(void)
 module_init(ir_rx_init);
 module_exit(ir_rx_exit);
 module_param_named(debug_mask, debug_mask, int, 0644);
+module_param_named(IR_RXFILT_VAL, IR_RXFILT_VAL, int, 0644);
+module_param_named(IR_RXIDLE_VAL, IR_RXIDLE_VAL, int, 0644);
+module_param_named(IR_ACTIVE_T, IR_ACTIVE_T, int, 0644);
+module_param_named(IR_ACTIVE_T_C, IR_ACTIVE_T_C, int, 0644);
+module_param_named(IR_L1_MIN, IR_L1_MIN, int, 0644);
+module_param_named(IR_L0_MIN, IR_L0_MIN, int, 0644);
+module_param_named(IR_PMAX, IR_PMAX, int, 0644);
+module_param_named(IR_DMID, IR_DMID, int, 0644);
+module_param_named(IR_DMAX, IR_DMAX, int, 0644);
 MODULE_DESCRIPTION("Remote IR driver");
 MODULE_AUTHOR("DanielWang");
 MODULE_LICENSE("GPL");

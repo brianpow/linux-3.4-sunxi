@@ -57,33 +57,33 @@
 /* Frequency of Sample Clock = 23437.5Hz, Cycle is 42.7us */
 /* Pulse of NEC Remote >560us */
 #ifdef FPGA_SIM_CONFIG
-#define IR_RXFILT_VAL    (((16)&0x3f)<<2) /* Filter Threshold = 8*42.7 = ~341us < 500us */
-#define IR_RXIDLE_VAL    (((5)&0xff)<<8)  /* Idle Threshold = (2+1)*128*42.7 = ~16.4ms > 9ms */
-#define IR_ACTIVE_T      ((0&0xff)<<16)   /* Active Threshold */
-#define IR_ACTIVE_T_C    ((1&0xff)<<23)   /* Active Threshold */
+extern static u32  IR_RXFILT_VAL=    (((16)&0x3f)<<2);/* Filter Threshold = 8*42.7 = ~341us < 500us */
+extern static u32  IR_RXIDLE_VAL=    (((5)&0xff)<<8); /* Idle Threshold = (2+1)*128*42.7 = ~16.4ms > 9ms */
+extern static u32  IR_ACTIVE_T=      ((0&0xff)<<16);  /* Active Threshold */
+extern static u32  IR_ACTIVE_T_C=    ((1&0xff)<<23);  /* Active Threshold */
 
-#define IR_L1_MIN        (160)            /* 80*42.7 = ~3.4ms, Lead1(4.5ms) > IR_L1_MIN */
-#define IR_L0_MIN        (80)             /* 40*42.7 = ~1.7ms, Lead0(4.5ms) Lead0R(2.25ms)> IR_L0_MIN */
-#define IR_PMAX          (52)             /* 26*42.7 = ~1109us ~= 561*2, Pluse < IR_PMAX */
-#define IR_DMID          (52)             /* 26*42.7 = ~1109us ~= 561*2, D1 > IR_DMID, D0 =< IR_DMID */
-#define IR_DMAX          (106)            /* 53*42.7 = ~2263us ~= 561*4, D < IR_DMAX */
+extern static u32  IR_L1_MIN=        (160);           /* 80*42.7 = ~3.4ms, Lead1(4.5ms) > IR_L1_MIN */
+extern static u32  IR_L0_MIN=        (80);            /* 40*42.7 = ~1.7ms, Lead0(4.5ms) Lead0R(2.25ms)> IR_L0_MIN */
+extern static u32  IR_PMAX=          (52);            /* 26*42.7 = ~1109us ~= 561*2, Pluse < IR_PMAX */
+extern static u32  IR_DMID=          (52);            /* 26*42.7 = ~1109us ~= 561*2, D1 > IR_DMID, D0 =< IR_DMID */
+extern static u32  IR_DMAX=          (106);           /* 53*42.7 = ~2263us ~= 561*4, D < IR_DMAX */
 
 #else
-#define IR_RXFILT_VAL    (((8)&0x3f)<<2)  /* Filter Threshold = 8*42.7 = ~341us	< 500us */
-#define IR_RXIDLE_VAL    (((2)&0xff)<<8)  /* Idle Threshold = (2+1)*128*42.7 = ~16.4ms > 9ms */
-#define IR_ACTIVE_T      ((0&0xff)<<16)   /* Active Threshold */
-#define IR_ACTIVE_T_C    ((1&0xff)<<23)   /* Active Threshold */
+extern static u32  IR_RXFILT_VAL=    (((8)&0x3f)<<2); /* Filter Threshold = 8*42.7 = ~341us	< 500us */
+extern static u32  IR_RXIDLE_VAL=    (((2)&0xff)<<8); /* Idle Threshold = (2+1)*128*42.7 = ~16.4ms > 9ms */
+extern static u32  IR_ACTIVE_T=      ((0&0xff)<<16);  /* Active Threshold */
+extern static u32  IR_ACTIVE_T_C=    ((1&0xff)<<23);  /* Active Threshold */
 
-#define IR_L1_MIN        (80)             /* 80*42.7 = ~3.4ms, Lead1(4.5ms) > IR_L1_MIN */
-#define IR_L0_MIN        (40)             /* 40*42.7 = ~1.7ms, Lead0(4.5ms) Lead0R(2.25ms)> IR_L0_MIN */
-#define IR_PMAX          (26)             /* 26*42.7 = ~1109us ~= 561*2, Pluse < IR_PMAX */
-#define IR_DMID          (26)             /* 26*42.7 = ~1109us ~= 561*2, D1 > IR_DMID, D0 =< IR_DMID */
-#define IR_DMAX          (53)             /* 53*42.7 = ~2263us ~= 561*4, D < IR_DMAX */
+extern static u32  IR_L1_MIN=        (80);            /* 80*42.7 = ~3.4ms, Lead1(4.5ms) > IR_L1_MIN */
+extern static u32  IR_L0_MIN=        (40);            /* 40*42.7 = ~1.7ms, Lead0(4.5ms) Lead0R(2.25ms)> IR_L0_MIN */
+extern static u32  IR_PMAX=          (26);            /* 26*42.7 = ~1109us ~= 561*2, Pluse < IR_PMAX */
+extern static u32  IR_DMID=          (26);            /* 26*42.7 = ~1109us ~= 561*2, D1 > IR_DMID, D0 =< IR_DMID */
+static u32  IR_DMAX=          (53);            /* 53*42.7 = ~2263us ~= 561*4, D < IR_DMAX */
 #endif
 
 #define IR_ERROR_CODE    (0xffffffff)
 #define IR_REPEAT_CODE   (0x00000000)
-#define DRV_VERSION      "1.00"
+#define DRV_VERSION      "1.01"
 
 enum {
 	DEBUG_INIT = 1U << 0,
